@@ -1,69 +1,120 @@
-![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
+# Park Finder
 
-# LAB | Authentication with PassportJS
+## Description
 
-## Introduction
+Search platform for parks in Barcelona to find parks filtering by some features and creating the favorite list of parks aswell as creating reviews.
 
-In previous lessons, we learned how important it is to manage your users (have them saved and retrieved) successfully. In this lab, you will do it one more time, just to make sure we are ready to move forward into new knowledge conquers. :wink:
-Overall, the goal is to understand how authentication and authorization work in web applications, why these features are useful, and to be able to implement signup and login features using Passport.
+## User Stories 
 
-## Requirements
+- **404** - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault.
+- **500** - As a user I want to see a nice error page when the super team screws it up so that I know that is not my fault.
+- **Homepage** - As a user I want to be able to access the homepage and filter by type of park, log in and sign up.
+- **Sign up** - As a user I want to sign up on the web page so that I can add favorite parks to my list and do reviews.
+- **Login** - As a user I want to be able to log in on the web page so that I can get back to my account.
+- **Logout** - As a user I want to be able to log out from the web page so that I can make sure no one will access my account.
+- **Favorite list** - As a user I want to see the list of my favorites and delete them.
+- **Edit user** - As a user I want to be able to edit my profile.
+- **Result** - As a user I want to see the list of parks filter by my preferences.
+- **Park listing** - As a user I want to see more details of the restaurant, be able to call them and visit their website and save it as favorites.
 
-- Fork this repo
-- Clone this repo
+## Server Routes (Back-end):
 
-## Submission
+| Method | Route                      | Description                                                  | Request - Body                                           |
+| ------ | -------------------------- | ------------------------------------------------------------ | -------------------------------------------------------- |
+| GET    | /parks                     | Main page route. Renders home `index` view with list of parks. |                                                          |
+| GET    | /auth/login                | Renders login form view.                                     |                                                          |
+| POST   | /auth/login                | Sends Login form data to the server.                         | { email, password }                                      |
+| GET    | /auth/signup               | Renders signup form view.                                    |                                                          |
+| POST   | /auth/signup               | Sends Sign Up info to the server and creates user in the DB. Renders home `private` view. | { email, password }                                      |
+| GET    | /auth/logout               | Disconnect user session. Renders home `index` view.          |                                                          |
+| GET    | /private/edit-profile      | Private route. Renders edit-profile form view.               |                                                          |
+| PUT    | /private/edit-profile      | Private route. Sends edit-profile info to server and updates user in DB. | { email, password, [firstName], [lastName], [imageUrl] } |
+| GET    | /private/favorites         | Private route. Render the user profile view with his favorites and his reviews. |                                                          |
+| POST   | /private/favorites         | Private route. Adds a new favorite for the current user.     | { parkname, district }                                   |
+| DELETE | /private/favorites/:parkId | Private route. Deletes the existing favorite from the current user. |                                                          |
+| GET    | /parks                     | Renders list view of parks.                                  |                                                          |
+| GET    | /parks/:id                 | Renders details view for the particular park.                |                                                          |
+| GET    | /parks/:id/reviews         | Renders reviews of park.                                     |                                                          |
+| GET    | /parks/:id/reviews/add     | (private route?) Renders add-review form view.               |                                                          |
+| POST   | /parks/:id/reviews/add     | (private route?) Sends review info to server and creates review in DB. | { parkname, userid, review}                              |
+| GET    | /parks/:id/reviews/edit    | (private route?) Renders edit-review form view.              |                                                          |
+| POST   | /parks/:id/reviews/edit    | (private route?) Sends edit-review info to server and updates review in DB and in reviews view. |                                                          |
+| POST   | /parks/:id/reviews/delete  | (private route?) Executes delete button function and updated DB. Redirects to `/private/favorites` view. |                                                          |
 
-- Upon completion, run the following commands:
 
-```bash
-git add .
-git commit -m "done"
-git push origin master
-```
 
-- Create Pull Request so your TAs can check up your work.
+## Models
 
-## Introductions
+### User model
 
-The provided code gives you the basic layout and organization for this assignment.
+{
+   _id: _default,
+   name: String,
+  email: String,
+  password: String,
+  avatar: String,
+  favoriteParks: [FavoriteId],
+}
 
-### Iteration 0 | Initialize the project
+### Park model
 
-After forking and cloning the project, you have to install all the dependencies:
+{
 
-```sh
-$ cd lab-authentication-with-passport
-$ npm install
-```
+_id: _default,
+name: String,
+description: String,
+images: String,
+location = {
+	type: "Point",
+	coordinates: [ 12.3445, -12.5069 ]
+},
+extension: { type: Number },
+hasPublicDrinkingFountain: { type: Boolean },
+hasFountain: { type: Boolean },
+hasLake: { type: Boolean },
+hasPlayGround: { type: Boolean },
+hasPublicToilettes: { type: Boolean },
+hasTrees: { type: Boolean }, (if yes: String?),
+allowsDogs: { type: Boolean },
+wifiService: { type: String, enum: [ "weak", "medium", "good" ] }
+closeToBicing: { type: Boolean },
+hasSoftFloor: { type: Boolean },
+openRangeHour: { type: Date / Date },
+district: { type: String, enum: [ desplegable ] },
+hasSkateZone: { type: Boolean }
+}
 
-Now you are ready to start. 🚀
+### Review model
 
-## Iteration #1: The `signup` feature
+{
 
-The repo you cloned comes with a `User` model and a `router` file already made for you. It also has all the views you need, although some of them are empty. :smile:
+_id: _default,
+ParkId: { type: Schema.Types.ObjectId, ref: “Park” }
+UserId: { type: Schema.Types.ObjectId, ref: “User” }
+rating: { type: Number, }
+content: { type: String, maxlength: 1000 }
 
-Add a new `GET` route to your `routes/auth.routes.js` file with the path `/signup` and point it to your `views/auth/signup.hbs` file. This route needs to render the signup form.
-Since you still haven't created the signup form, go ahead and add a form that makes a POST request to `/signup`, with a field for `username` and `password`.
+}
 
-Finally, add a POST route to your `routes/auth.routes.js` to receive the data from the signup form and create a new user with the data.
+## Backlog
 
-Make sure you install **bcryptjs** npm package and require it in `routes/auth.routes.js` file.
+- MapBox to implement search by closest parks.
+- Use of Axios.
+- Admin user can add parks.
+- Nodemailer to send messages to user.
 
-## Iteration #2: The `login` feature
+## Links
 
-Follow the same logic as for the signup. Inside the `routes/auth.routes.js` file, create a `GET` route that will display the login form. Create a login form in the `views/auth/login.hbs`. The form should make a POST request to `/login`.
-Once you have the form, add another route to the router. This route needs to receive the data from the form and log the user in.
+### Git
 
-**But wait...**
+Repository Link
 
-To do that, we need to **configure the session** and **initialize a session with passport** in our `app.js` file. We also need to add the `passport.serializeUser()` and `passport.deserializeUser()` methods as well as define the Passport Local Strategy. The same as you were guided in the lesson, start with installing `passport`, `passport-local` and `express-session`.
-:bulb: Don't forget to add `SECRET` to the `.env` when creating a session.
+Deploy Link
 
-## Iteration #3: Private page
+### Trello
 
-In the repo you forked, there is a file `views/auth/private.hbs`. This page is referenced in the `routes/auth.routes.js` with the path `/private-page`. We use the `ensureLogin.ensureLoggedIn()` method to make sure that the user is logged in before viewing this page.
+https://trello.com/b/FZoF6fWe/m2-proyect
 
-If everything worked correctly, the user should be able to sign up, login, and then visit the page, where they will receive a personalized greeting.
+### Slides
 
-Happy coding! :heart:
+Slides Link
