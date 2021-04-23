@@ -5,8 +5,8 @@ const User = require('../models/User.model');
 const { isLoggedOut, isLoggedIn } = require('../middlewares');
 const router = express.Router();
 const saltRounds = 10;
-// Require user model
 
+// Confirming user is loggedOut
 router.get('/auth/signup', isLoggedOut, (req, res) => {
   res.render('auth/signup');
 })
