@@ -1,0 +1,30 @@
+<h1>Park details 🌲🌳⛲</h1>
+<div class="main-details">
+    <h2>{{ park.parkName }} </h2>
+    <img src="{{ park.images }}" alt="{{ park.parkName }}"> 
+
+    <div>
+        <p>{{park.description}}</p>
+             
+        <p> Extension: {{park.extension}} ha</p>
+        <p> Fountain: {{#if hasFountain}}
+            <div> Yes</div>
+            {{else}}
+            <div>No</div>
+            {{/if}}
+        </p>
+        <p> Playground: </p>
+        <p> Public toilettes: </p>
+        <p> Trees: </p>
+        <p> Dogs Allowed: </p>
+        <p> Wifi: </p>
+        <p> District: </p>
+        <p> Skate zone: </p>
+        <div class="openrange">
+        {{#each park.openRangeHour}}
+            <p> {{this}} | </p>
+        {{/each}}
+        <a href="/">Go back</a> 
+    </div>
+    </div>
+</div>

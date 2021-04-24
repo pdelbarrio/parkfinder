@@ -46,7 +46,7 @@ passport.serializeUser((user, cb) => {
 require('./configs/passport.config')(app);
 
 mongoose
-  .connect('mongodb://localhost/auth-with-passport', {
+  .connect('mongodb://localhost/parkfinder', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true
@@ -79,7 +79,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.locals.title = 'Express - Generated with IronGenerator';
 
 // Routes middleware goes here
-const index = require('./routes/index.routes');
+const index = require('./routes/parks.routes');
 app.use('/', index);
 const authRoutes = require('./routes/auth.routes');
 app.use('/', authRoutes);
