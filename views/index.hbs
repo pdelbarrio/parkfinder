@@ -1,7 +1,23 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+{{!-- <h1>{{title}}</h1> --}}
+<p>Welcome to ParkFinder 🌲🌳⛲ </p>
 {{#if user}}
   <p>Welcome {{user.username}}</p>
 {{/if}}
 
+<h2>List of parks</h2>
 
+<div class="list">
+    {{#each parks}}
+    <div class="list-item">
+        <h3> {{ parkName }} </h3>
+        <a href="/{{id}}"><img src="{{ images }}" alt="{{ parkName }}"></a>
+
+        
+        
+        <br>
+        <a href="/{{id}}">Park details</a>
+        
+        
+    </div>
+    {{/each}}
+</div>

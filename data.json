@@ -1,0 +1,47 @@
+[
+    {
+      "parkName": "Parc de la Ciutadella",
+      "description": "Va ser el primer parc dissenyat específicament com a parc públic i construït cap al final del segle XIX. És un espai àmpliament utilitzat per a tota mena d’activitats lúdiques i culturals. Té més de cent espècies vegetals, amb molts arbres centenaris i conjunts escultòrics d’interès.",
+      "images": "https://ajbcn-nasia-prod.s3.amazonaws.com/nasia-pro/media/2015%2C12%2CAZ8Q2653-760x428.jpg",      
+      "extension": 17.42,    
+      "hasFountain": true,    
+      "hasPlayGround": false,
+      "hasPublicToilettes": true,
+      "hasTrees": true,
+      "allowsDogs": true,
+      "wifiService": true,    
+      "openRangeHour": ["10:00", "22:30"],
+      "district": "district1" ,
+      "hasSkateZone": false 
+    },
+    {
+        "parkName": "Parc lineal Garcia Fària",
+        "description": "El parc enllaça dos grans espais verds: els parcs del Poblenou i de Diagonal Mar. Ideal per als ciclistes, és una excel•lent porta d'accés a les platges properes al Besòs i a l'espai del Fòrum Barcelona 2004.",
+        "images": "https://ajbcn-nasia-prod.s3.amazonaws.com/nasia-pro/media/2015%2C12%2CAZ8Q6759-760x428.jpg",      
+        "extension": 5.2,    
+        "hasFountain": true,    
+        "hasPlayGround": true,
+        "hasPublicToilettes": false,
+        "hasTrees": true,
+        "allowsDogs": true,
+        "wifiService": true,    
+        "openRangeHour": ["07:00", "22:30"],
+        "district": "district2" ,
+        "hasSkateZone": true 
+      },
+      {
+        "parkName": "Parc de l'Estació del Nord",
+        "description": "El parc, espaiós i assolellat, és una peça notable de land art que s'organitza a redós d'una gran escultura de ceràmica blava situada al mig d'un parterre de gespa gegant. Una combinació d'art i natura única a Barcelona pel maridatge entre jardineria, arbres i ceràmica.",
+        "images": "https://ajbcn-nasia-prod.s3.amazonaws.com/nasia-pro/media/2016%2C01%2C11135017%2CAZ8Q9245-760x428.png",      
+        "extension": 3.58,    
+        "hasFountain": true,    
+        "hasPlayGround": false,
+        "hasPublicToilettes": false,
+        "hasTrees": true,
+        "allowsDogs": true,
+        "wifiService": false,    
+        "openRangeHour": ["07:00", "22:30"],
+        "district": "district3" ,
+        "hasSkateZone": false 
+      }
+]

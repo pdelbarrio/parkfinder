@@ -1,0 +1,55 @@
+<h1>Park details 🌲🌳⛲</h1>
+<div class="main-details">
+    <h2>{{ park.parkName }} </h2>
+    <img src="{{ park.images }}" alt="{{ park.parkName }}"> 
+
+    <div>
+        <p>{{park.description}}</p>
+             
+        <p> Extension: {{park.extension}} ha</p>
+        <p> Fountain: {{#if park.hasFountain}}
+            <div> Yes</div>
+            {{else}}
+            <div>No</div>
+            {{/if}}
+        </p>
+        <p> Playground: {{#if park.hasPlayGround}}
+            <div> Yes</div>
+            {{else}}
+            <div>No</div>
+            {{/if}}</p>
+        <p> Public toilettes: {{#if park.hasPublicToilettes}}
+            <div> Yes</div>
+            {{else}}
+            <div>No</div>
+            {{/if}}</p>
+        <p> Trees: {{#if park.hasTrees}}
+            <div> Yes</div>
+            {{else}}
+            <div>No</div>
+            {{/if}}</p>
+        <p> Dogs Allowed: {{#if park.allowsDogs}}
+            <div> Yes</div>
+            {{else}}
+            <div>No</div>
+            {{/if}}</p>
+        <p> Wifi: {{#if park.wifiService}}
+            <div> Yes</div>
+            {{else}}
+            <div>No</div>
+            {{/if}}</p>
+        <p> District: {{park.district}}</p>
+        <p> Skate zone: {{#if park.hasSkateZone}}
+            <div> Yes</div>
+            {{else}}
+            <div>No</div>
+            {{/if}}</p>
+        <div class="openrange">
+            <p>Open/Close:</p>
+        {{#each park.openRangeHour}}
+            <p> {{this}} | </p>
+        {{/each}}
+        <a href="/">Go back</a> 
+    </div>
+    </div>
+</div>
