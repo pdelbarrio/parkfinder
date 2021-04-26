@@ -9,12 +9,18 @@
   </div>
 {{/if}}
 
-{{user.favorites}}
+{{!-- {{user.favorites}} --}}
+
 {{#each userFavs.favorites}}
 <p>{{parkName}}</p>
 <img src="{{images}}" alt="{{parkName}}">
 <br>
-<a href="#"> Remove from favorites</a>
+
+
+<form action="/aaa" method="POST">
+    <input type="hidden" name="parkID" value="{{this._id}}">
+    <button type="submit"><i class="fas fa-heart"></i></button>
+  </form>
 <hr>
 {{/each}}
 
