@@ -1,6 +1,7 @@
 const express = require('express');
 const {render} = require('../app');
 const Park = require('../models/Park.model');
+const User = require('../models/User.model');
 
 
 const router = express.Router();
@@ -23,6 +24,32 @@ router.get('/:id', (req, res, next) => {
   .catch(error => next (error))
 });
 
+//Add park to favorites
+router.post('/addfavorites', (req, res, next) => {
+  const { parkID } = req.body;
+  console.log(req.user)
+  const { _id: userID } = req.user;
+  console.log(req.body);
+  User.findById(userID)
+    .then((user) =>{
+      if (user) {
+        const { favorites } = user;
+        if (!favorites.includes(parkID)){
+          User.findByIdAndUpdate(
+            userID,
+              { $push: { favorites : parkID }}, { new: true}
+          )
+            .then((user) => res.redirect(`/${parkID}`))
+            .catch((error) => next(error));
+        } else {
+          res.redirect(`/${parkID}`);
+        }
+      } else {
+        res.redirect(`/${parkID}`); 
+      }
+    })
+    .catch((error) => next(error));
+});
 
 
 module.exports = router;
