@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const User = require('../models/User.model');
+const Park = require('../models/Park.model');
 const { isLoggedOut, isLoggedIn } = require('../middlewares');
 const router = express.Router();
 const saltRounds = 10;
@@ -52,9 +53,18 @@ router.post('/auth/signup', (req, res) => {
     })
 });
 router.get('/auth/private', isLoggedIn, (req, res) =>{
-  res.render('auth/private', {
-    user: req.user
-  }) 
+  User.findById(req.user.id)
+  .populate("favorites")
+  .then((userFavs) =>{
+    console.log(userFavs)
+    res.render('auth/private', {
+      user: req.user, userFavs   
+    }) 
+
+  })
+  
+  console.log(req.user.id)
+  // Park.findById
 })
 
 router.get('/auth/login', isLoggedOut, (req, res) => {

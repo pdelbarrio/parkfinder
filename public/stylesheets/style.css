@@ -1,8 +1,15 @@
 body {
-  padding: 50px;
+  padding: 0x;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
   color: #00B7FF; }
-
+.logo{
+  width: 150px;
+}
 /*# sourceMappingURL=style.css.map */
+
+.images{
+  width: 80vw;
+  height: auto;
+}

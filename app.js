@@ -11,7 +11,8 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
 const User = require('./models/User.model');
-const session = require('express-session');
+const Park = require('./models/Park.model');
+const session = require('express-session'); 
 const MongoStore = require('connect-mongo');
 const app = express();
 
@@ -76,11 +77,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = 'Park Finder | Find your park!';
 
 // Routes middleware goes here
-const index = require('./routes/parks.routes');
-app.use('/', index);
+const parkRouter = require('./routes/parks.routes');
+app.use('/', parkRouter);
 const authRoutes = require('./routes/auth.routes');
 app.use('/', authRoutes);
 

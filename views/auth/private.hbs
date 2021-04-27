@@ -2,10 +2,28 @@
 {{#if user}}
   <div>
     <h1>Your favorites/reviews</h1>
-    <h1>Hello, <span style="color: red;">{{ user.username}}</span>. Here are your favorite parks </h1>
-    <img src="https://okdiario.com/img/2019/10/13/parques-mas-bonitos-de-barcelona-655x368.jpg" alt="Your parks.">
+    <h1>Hello, <span style="color: green;">{{ user.username}}</span>. Here are your favorite parks </h1>
+    {{!-- <img src="https://okdiario.com/img/2019/10/13/parques-mas-bonitos-de-barcelona-655x368.jpg" alt="Your parks."> --}}
+    <br>
     <a href="/">Index</a>
   </div>
 {{/if}}
+
+{{!-- {{user.favorites}} --}}
+
+{{#each userFavs.favorites}}
+<p>{{parkName}}</p>
+<img class="images" src="{{images}}" alt="{{parkName}}">
+<br>
+
+
+<form action="/quitfavorites" method="POST">
+    <input type="hidden" name="parkID" value="{{this._id}}">
+    <button type="submit">Remove <i class="fas fa-heart"></i></button>
+  </form>
+<hr>
+{{/each}}
+
+
 
 <a class="nav-link" href="/auth/logout">Logout</a>

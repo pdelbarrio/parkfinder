@@ -1,8 +1,19 @@
 <h1>Park details 🌲🌳⛲</h1>
 <div class="main-details">
+    
     <h2>{{ park.parkName }} </h2>
-    <img src="{{ park.images }}" alt="{{ park.parkName }}"> 
 
+    
+
+
+    <img class="images" src="{{ park.images }}" alt="{{ park.parkName }}"> 
+    {{!-- Users only can add favorites when logged --}}
+    {{!-- {{#if user}} --}}
+    <form action="/addfavorites" method="POST">
+        <input type="hidden" name="parkID" value="{{park._id}}">
+        <button type="submit">Add <i class="fas fa-heart"></i></button>
+    </form>
+    {{!-- {{/if}} --}}
     <div>
         <p>{{park.description}}</p>
              

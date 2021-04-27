@@ -4,13 +4,13 @@
   <p>Welcome {{user.username}}</p>
 {{/if}}
 
-<h2>List of parks</h2>
+<h4>Find your park and add it to favorites!</h4>
 
 <div class="list">
     {{#each parks}}
     <div class="list-item">
         <h3> {{ parkName }} </h3>
-        <a href="/{{id}}"><img src="{{ images }}" alt="{{ parkName }}"></a>
+        <a href="/{{id}}"><img class="images" src="{{ images }}" alt="{{ parkName }}"></a>
 
         
         
