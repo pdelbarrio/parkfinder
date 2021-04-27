@@ -52,7 +52,7 @@ router.post('/addfavorites', (req, res, next) => {
 });
 
 //Remove park from favorites
-router.post('/aaa', (req, res, next) => {
+router.post('/quitfavorites', (req, res, next) => {
   const { parkID } = req.body;
   const { _id: userID } = req.user;
   // console.log("park", parkID)
