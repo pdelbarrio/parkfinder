@@ -5,8 +5,45 @@
 {{/if}}
 
 <h4>Find your park and add it to favorites!</h4>
+<div>
+  <form method="GET" action="/find-parks">
+  <label>
+    <input type="checkbox" id="fountain" name="fountain"> 
+    Fountain
+    </label>    
+    <label>
+    <input type="checkbox" id="playground" name="playground"> 
+    Playground
+    </label>
+    <input type="checkbox" id="toilette" name="toilette"> 
+    Public toilette
+    </label>
+    <input type="checkbox" id="trees" name="trees"> 
+    Trees
+    </label>
+    <input type="checkbox" id="dogs" name="dogs"> 
+    Dogs allowed
+    </label>
+    <input type="checkbox" id="wifi" name="wifi"> 
+    Wifi
+    </label>
+    <input type="checkbox" id="skate" name="skate"> 
+    Skate zone
+    </label>
+    <br>
+    <label for="district">Select district:</label>
+<select id="district" name="district">
+  <option name="">bla</option>
+  <option name="district1">District 1</option>
+  <option name="district2">District 2</option>
+  <option name="district3">District 3</option>  
+</select>
+<input type="submit" value="Submit">
+</form>
+</div>
 
 <div class="list">
+  {{#if parks}}
     {{#each parks}}
     <div class="list-item">
         <h3> {{ parkName }} </h3>
@@ -20,4 +57,7 @@
         
     </div>
     {{/each}}
+    {{else}}
+    No resultados
+    {{/if}}
 </div>

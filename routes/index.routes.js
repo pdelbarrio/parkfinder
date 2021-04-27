@@ -1,17 +1,18 @@
 const express = require('express');
 const router = express.Router();
+const { isLoggedOut, isLoggedIn } = require('../middlewares');
 
 /* GET home page */
-router.get('/', (req, res) => res.render('index'));
+// router.get('/', (req, res) => res.render('index'));
 
 
 
 //tests
 
-router.get('/', (req, res, next) => {
+router.get('/', isLoggedIn, (req, res, next) => {
     Park.find({})
     .then(parks => {
-      res.render('index', { parks });
+      res.render('index', { parks, user: req.user });
     })
     .catch(error => next(error))
   });

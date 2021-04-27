@@ -2,14 +2,27 @@ const express = require('express');
 const {render} = require('../app');
 const Park = require('../models/Park.model');
 const User = require('../models/User.model');
-
+const { isLoggedOut, isLoggedIn } = require('../middlewares');
 
 const router = express.Router();
+
+router.get('/find-parks',(req, res) =>{
+  console.log("test")
+  const { fountain, playground, toilette, trees, dogs, wifi, skate } = req.query;
+  console.log(req.query)
+  
+  Park.find({$or: [{hasFountain: fountain ? true : false }] })
+  .then((foundParks) =>{
+    if(foundParks.length === 0 ){res.render('index', {user: req.user, parks:null})}
+    res.render('index', {user: req.user, parks:foundParks})
+  })
+  .catch((error) => next(error));
+})
 
 router.get('/', (req, res, next) => {
   Park.find({})
   .then(parks => {
-    res.render('index', { parks });
+    res.render('index', { user: req.user, parks });
   })
   .catch(error => next(error))
 });
@@ -19,7 +32,7 @@ router.get('/:id', (req, res, next) => {
   const { id } = req.params;
   Park.findById(id)
   .then(park => {
-    res.render('details', { park });
+    res.render('details', {  user: req.user, park });
   })
   .catch(error => next (error))
 });
@@ -74,6 +87,8 @@ router.post('/quitfavorites', (req, res, next) => {
     })
     .catch((error) => next(error));
 });
+
+//Find parks
 
 
 module.exports = router;
