@@ -16,6 +16,7 @@ const parkSchema = new Schema({
           required: false,
         }
       },
+    getThere: String,
     extension: { type: Number },    
     hasFountain: { type: Boolean },    
     hasPlayGround: { type: Boolean },

@@ -79,7 +79,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 // default value for title local
 app.locals.title = 'Park Finder | Find your park!';
 
-// Routes middleware goes here
+// Routes middleware goes here7
 //añadir ruta /parks TODO:TODO:TODO:
 const parkRouter = require('./routes/parks.routes');
 app.use('/', parkRouter);

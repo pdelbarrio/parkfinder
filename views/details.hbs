@@ -18,6 +18,9 @@
         <p>{{park.description}}</p>
              
         <p> Extension: {{park.extension}} ha</p>
+
+        <a href="{{park.getThere}}" target="_blank">Get there!</a>
+
         <p> Fountain: {{#if park.hasFountain}}
             <div> Yes</div>
             {{else}}
