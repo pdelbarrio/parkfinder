@@ -2,12 +2,79 @@
 
 <form action="/parks/create" method="POST">
 
-    <label for="parks-parkName">parkName</label>
-    <input type="text" name="parkName">
+    <label for="parks-name">Name:</label>
+    <input type="text" name="name">
+    
+    <label for="parks-description">Description:</label>
+    <input type="text" name="description">
 
-    <label for="parks-extension">Extension</label>
+    <label for="parks-images">Images</label>
+    <input type="file" name="images">
+
+    <label for="parks-location">Location:</label>
+    <input type="map" name="location">
+
+    <label for="parks-extension">Extension:</label>
     <input type="number" name="extension">
+
+    <input type="checkbox" id="fountain" name="fountain" value="Fountain">
+    <label for="fountain"> Fountain </label><br>
+  
+    <input type="checkbox" id="childrenPlayground" name="playground" value="Playground">
+    <label for="playground"> Children playground </label><br><br>
+    
+    <input type="checkbox" id="publicToilettes" name="toilettes" value="Toilettes">
+    <label for="toilettes"> Public toilettes </label><br>
+    
+    <input type="checkbox" id="trees" name="trees" value="Trees">
+    <label for="trees"> Trees </label><br><br>
+    
+    <input type="checkbox" id="allowDogs" name="dogs" value="Dogs">
+    <label for="vehicle2"> Allow dogs </label><br>
+    
+    <input type="checkbox" id="wifi" name="wifi" value="Wifi">
+    <label for="wifi"> Wifi service </label><br><br>
+    
+    <input type="checkbox" id="skateZone" name="skateZone" value="Skate">
+    <label for="skateZone"> Skate zone </label><br><br>
+
+<!--
+    <label for="parks-fountain">Fountain:</label>
+    <input type="radio" name="fountain">
+
+    <label for="parks-playgound">Children playground:</label>
+    <input type="radio" name="playground">
+
+    <label for="parks-toilettes">Public toilettes:</label>
+    <input type="radio" name="toilettes">
+
+    <label for="parks-trees">Trees:</label>
+    <input type="radio" name="trees">
+
+    <label for="parks-dogs">Allow dogs:</label>
+    <input type="radio" name="dogs">
+
+    <label for="parks-wifi">Wifi Service:</label>
+    <input type="radio" name="wifi">
+-->
+    <label for="parks-openHours">Open range hour:</label>
+    <input type="number" name="hours">
+
+    <label for="parks-district">District:</label>
+    <input type="radio" name="district">
+
+    <label for="parks-skate">Has skate zone:</label>
+    <input type="radio" name="skate">
+
+    <label for="parks-map">How to arrive:</label>
+    <input type="url" name="map">
 
     <button type="submit">Create</button>
 
 </form>
+
+{{#if error}}
+  <p>Ha ocurrido un error</p>
+{{/if}}
+
+module.exports = 

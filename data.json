@@ -12,7 +12,8 @@
       "wifiService": true,    
       "openRangeHour": ["10:00", "22:30"],
       "district": "district1" ,
-      "hasSkateZone": false 
+      "hasSkateZone": false,
+      "howToArrive": "https://www.barcelona.cat/ca/que-pots-fer-a-bcn/parcs-i-jardins/parc-de-la-ciutadella_92086011921.html",
     },
     {
         "parkName": "Parc lineal Garcia Fària",
@@ -27,7 +28,9 @@
         "wifiService": true,    
         "openRangeHour": ["07:00", "22:30"],
         "district": "district2" ,
-        "hasSkateZone": true 
+        "hasSkateZone": true,
+        "howToArrive": "https://www.barcelona.cat/ca/que-pots-fer-a-bcn/parcs-i-jardins/parc-lineal-garcia-faria_99400355356.html"
+
       },
       {
         "parkName": "Parc de l'Estació del Nord",
@@ -42,6 +45,7 @@
         "wifiService": false,    
         "openRangeHour": ["07:00", "22:30"],
         "district": "district3" ,
-        "hasSkateZone": false 
+        "hasSkateZone": false,
+        "howToArrive": "https://www.barcelona.cat/ca/que-pots-fer-a-bcn/parcs-i-jardins/parc-de-l-estacio-del-nord_92086028091.html", 
       }
 ]

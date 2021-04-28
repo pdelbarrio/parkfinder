@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema   = mongoose.Schema;
 
 const parkSchema = new Schema({    
-    parkName: {type : String , unique : true},
+    Name: { type : String , unique : true },
     description: String,
     images: String,
     location: {
@@ -29,7 +29,8 @@ const parkSchema = new Schema({
                     "type": "string"
     }},
     district: { type: String, enum: [ "district1", "district2", "district3" ] },
-    hasSkateZone: { type: Boolean }}, 
+    hasSkateZone: { type: Boolean },
+    howToArrive: { type: String }}, 
     {
   timestamps: true
 });

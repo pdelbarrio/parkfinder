@@ -9,13 +9,13 @@
 <div class="list">
     {{#each parks}}
     <div class="list-item">
-        <h3> {{ parkName }} </h3>
-        <a href="/{{id}}"><img class="images" src="{{ images }}" alt="{{ parkName }}"></a>
+        <h3> {{ description }} </h3>
+        <a href="/parks/{{id}}"><img class="images" src="{{ images }}" alt="{{ parkName }}"></a>
 
         
         
         <br>
-        <a href="/{{id}}">Park details</a>
+        <a href="/parks/{{id}}">Park details</a>
         
         
     </div>

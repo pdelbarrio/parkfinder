@@ -10,10 +10,15 @@ router.get('/', (req, res, next) => {
   Park.find({})
   .then(parks => {
     res.render('index', { parks });
+    console.log('parks')
   })
   .catch(error => next(error))
 });
 
+router.get('/create-park', (req, res) => {
+  res.render('create-park');
+  console.log('hola');
+})
 
 router.get('/:id', (req, res, next) => {
   const { id } = req.params;
@@ -76,14 +81,25 @@ router.post('/quitfavorites', (req, res, next) => {
 });
 
 //Create park
-router.get('/views/create-park', (req, res) => {
-    res.render('create-park');
+
+
+router.post('/create', (req, res) => {
+  console.log(req.body.name)
+  const { Name, description, images, location, extension, 
+    hasFountain, hasPlayground, hasPublicToilettes, 
+    hasTrees, allowDogs, wifiService, openRangeHour, 
+    district, hasSkateZone, howToArrive, timestamps } = req.body;
+  Park.insertOne({ Name, description, images, location, extension, 
+    hasFountain, hasPlayground, hasPublicToilettes, 
+    hasTrees, allowDogs, wifiService, openRangeHour, 
+    district, hasSkateZone, howToArrive, timestamps }) 
+  .then(() => {
+    res.redirect("/parks/")
   })
-
-router.post('/parks/create', (req, res) => {
-  console.log('la concha de la lora')
-});
-
+  .catch(error => {
+    res.render('create-park', { error })
+  })
+})
 
 
 module.exports = router;

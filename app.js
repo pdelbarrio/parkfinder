@@ -1,3 +1,8 @@
+/**
+ * app.js será el fichero de entrada a la aplicación, y la primera vista que app.js
+ * mostrará será index.hbs ('/').
+ */
+
 require('dotenv').config();
 
 const express = require('express');
@@ -16,8 +21,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const app = express();
 
-
-
+//User validation with passport
 app.use(
   session({
     secret: process.env.SECRET,
@@ -31,8 +35,6 @@ app.use(
     })
   })
 )
-
-
 
 passport.serializeUser((user, cb) => {
     cb(null, user._id)
@@ -58,8 +60,6 @@ mongoose
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
 
-
-
 // Middleware Setup
 // app.use(logger('dev'));
 // app.use(bodyParser.json());
@@ -69,21 +69,28 @@ const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.
 // app.use(cookieParser());
 require('./configs/middleware.config')(app);
 
-// Express View engine setup
 
+// Express View engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
+
 // default value for title local
 app.locals.title = 'Park Finder | Find your park!';
 
-// Routes middleware goes here
+
+// Routes middleware
+
 const parkRouter = require('./routes/parks.routes');
-app.use('/', parkRouter);
+app.use('/parks', parkRouter);
+
+const indexRouter = require('./routes/index.routes');
+app.use('/', indexRouter);
+
 const authRoutes = require('./routes/auth.routes');
-app.use('/', authRoutes);
+app.use('/auth', authRoutes);
 
 
 

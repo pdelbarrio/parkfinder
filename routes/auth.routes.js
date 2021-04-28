@@ -8,11 +8,11 @@ const router = express.Router();
 const saltRounds = 10;
 // Require user model
 
-router.get('/auth/signup', isLoggedOut, (req, res) => {
+router.get('/signup', isLoggedOut, (req, res) => {
   res.render('auth/signup');
 })
 
-router.post('/auth/signup', (req, res) => {
+router.post('/signup', (req, res) => {
   const { username, password } = req.body;
   console.log(req.body)
   if (!username || !password) {
@@ -52,7 +52,7 @@ router.post('/auth/signup', (req, res) => {
 
     })
 });
-router.get('/auth/private', isLoggedIn, (req, res) =>{
+router.get('/private', isLoggedIn, (req, res) =>{
   User.findById(req.user.id)
   .populate("favorites")
   .then((userFavs) =>{
@@ -67,17 +67,17 @@ router.get('/auth/private', isLoggedIn, (req, res) =>{
   // Park.findById
 })
 
-router.get('/auth/login', isLoggedOut, (req, res) => {
+router.get('/login', isLoggedOut, (req, res) => {
   res.render('auth/login');
 })
 
-router.post('/auth/login', passport.authenticate("local", {
+router.post('/login', passport.authenticate("local", {
   successRedirect: "/auth/private",
   failureRedirect: "/auth/login",
   passReqToCallback: true
 }));
 
-router.get('/auth/logout', (req, res) => {
+router.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/');
 })
