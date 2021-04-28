@@ -58,7 +58,7 @@ router.post('/quitfavorites', (req, res, next) => {
   // console.log("park", parkID)
   // console.log("user", userID);
   User.findById(userID)
-    .then((user) =>{
+    .then((user) => {
       if (user) {
         const { favorites } = user;
         if (favorites.includes(parkID)){
@@ -74,6 +74,16 @@ router.post('/quitfavorites', (req, res, next) => {
     })
     .catch((error) => next(error));
 });
+
+//Create park
+router.get('/views/create-park', (req, res) => {
+    res.render('create-park');
+  })
+
+router.post('/parks/create', (req, res) => {
+  console.log('la concha de la lora')
+});
+
 
 
 module.exports = router;
