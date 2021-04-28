@@ -10,38 +10,53 @@
       <div class="form">
         <form method="GET" action="/find-parks">
         <label for="slide">
+          <div class="main-checkbox">
+          <div class="checkboxes">
           <input type="checkbox" id="slide" name="fountain"> 
           Fountain
-          
+          <br>
           <input type="checkbox" id="slide" name="playground"> 
           Playground
-          
+          <br>
+          </div>
+          <div>
           <input type="checkbox" id="slide" name="toilette"> 
           Public toilette
-          
+          <br>
           <input type="checkbox" id="slide" name="trees"> 
           Trees
           
+          </div>
+          <div>
           <input type="checkbox" id="slide" name="dogs"> 
           Dogs allowed
-          
+          <br>
           <input type="checkbox" id="slide" name="wifi"> 
           Wifi
-          
+          <br>
           <input type="checkbox" id="slide" name="skate"> 
           Skate zone
+          <br>
+          </div>
+          </div>
           </label>
           <br>
           <label for="district"></label>
       <select id="district" name="district">
         <option name="">Select district</option>
-        <option name="district1">District 1</option>
-        <option name="district2">District 2</option>
-        <option name="district3">District 3</option>  
+        <option name="Sants-Montjuïc">Sants-Montjuïc</option>
+        <option name="Ciutat Vella">Ciutat Vella</option>
+        <option name="Sant Martí">Sant Martí</option> 
+        <option name="Eixample">Eixample</option>
+        <option name="Sarrià-Sant Gervasi">Sarrià-Sant Gervasi</option>
+        <option name="Nou Barris">Nou Barris</option>
+        <option name="Les Corts">Les Corts</option>
+        <option name="Horta-Guinardó">Horta-Guinardó</option>
+        <option name="Gràcia">Gràcia</option> 
       </select>
       <input type="submit" value="Submit">
       </form>
-      </div>
+    </div>
 
       <div class="list">
         {{#if parks}}

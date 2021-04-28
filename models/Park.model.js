@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema   = mongoose.Schema;
 
 const parkSchema = new Schema({    
-    parkName: {type : String , unique : true},
+    parkName: {type : String },
     description: String,
     images: String,
     location: {
@@ -29,7 +29,7 @@ const parkSchema = new Schema({
                     "items":{
                     "type": "string"
     }},
-    district: { type: String, enum: [ "district1", "district2", "district3" ] },
+    district: { type: String, enum: [ "Sants-Montjuïc", "Ciutat Vella", "Sant Martí", "Eixample", "Sarrià-Sant Gervasi", "Nou Barris", "Les Corts", "Horta-Guinardó", "Gràcia" ] },
     hasSkateZone: { type: Boolean }}, 
     {
   timestamps: true

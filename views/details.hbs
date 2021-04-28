@@ -1,11 +1,11 @@
-<h1>Park details 🌲🌳⛲</h1>
+
 <div class="main-details">
     
     <h2>{{ park.parkName }} </h2>
 
     
 
-
+    <div class="img-like">
     <img class="images" src="{{ park.images }}" alt="{{ park.parkName }}"> 
     {{!-- Users only can add favorites when logged --}}
     {{!-- {{#if user}} --}}
@@ -13,57 +13,75 @@
         <input type="hidden" name="parkID" value="{{park._id}}">
         <button type="submit">Add <i class="fas fa-heart"></i></button>
     </form>
+    </div>
     {{!-- {{/if}} --}}
     <div>
-        <p>{{park.description}}</p>
-             
-        <p> Extension: {{park.extension}} ha</p>
+        <p class="description">{{park.description}}</p>
+            
+         <a class="link-get" href="{{park.getThere}}" target="_blank">Get there!</a>
+         <br>
 
-        <a href="{{park.getThere}}" target="_blank">Get there!</a>
-
-        <p> Fountain: {{#if park.hasFountain}}
+            <br>
+        <p> <span class="key-style"> Extension: </span> {{park.extension}} ha</p>
+       
+        <div class="details-list">
+        <p> <span class="key-style">Fountain: </span> {{#if park.hasFountain}}
             <div> Yes</div>
             {{else}}
             <div>No</div>
             {{/if}}
         </p>
-        <p> Playground: {{#if park.hasPlayGround}}
+        </div>
+        <div class="details-list">
+        <p> <span class="key-style"> Playground: </span>{{#if park.hasPlayGround}}
             <div> Yes</div>
             {{else}}
             <div>No</div>
             {{/if}}</p>
-        <p> Public toilettes: {{#if park.hasPublicToilettes}}
+        </div>
+        <div class="details-list">
+        <p> <span class="key-style">Public toilettes: </span> {{#if park.hasPublicToilettes}}
             <div> Yes</div>
             {{else}}
             <div>No</div>
             {{/if}}</p>
-        <p> Trees: {{#if park.hasTrees}}
+        </div>
+        <div class="details-list">
+        <p> <span class="key-style">Trees: </span> {{#if park.hasTrees}}
             <div> Yes</div>
             {{else}}
             <div>No</div>
             {{/if}}</p>
-        <p> Dogs Allowed: {{#if park.allowsDogs}}
+        </div>
+        <div class="details-list">
+        <p> <span class="key-style">Dogs Allowed:</span> {{#if park.allowsDogs}}
             <div> Yes</div>
             {{else}}
             <div>No</div>
             {{/if}}</p>
-        <p> Wifi: {{#if park.wifiService}}
+        </div>
+        <div class="details-list">
+        <p> <span class="key-style"> Wifi: </span> {{#if park.wifiService}}
             <div> Yes</div>
             {{else}}
             <div>No</div>
             {{/if}}</p>
-        <p> District: {{park.district}}</p>
-        <p> Skate zone: {{#if park.hasSkateZone}}
+        </div>
+        {{!-- <p> District: {{park.district}}</p> --}}
+        <div class="details-list">
+        <p> <span class="key-style"> Skate zone:</span> {{#if park.hasSkateZone}}
             <div> Yes</div>
             {{else}}
             <div>No</div>
             {{/if}}</p>
+        </div>
         <div class="openrange">
-            <p>Open/Close:</p>
+            <p class="key-style"> Open/Close:</p>
         {{#each park.openRangeHour}}
-            <p> {{this}} | </p>
+            <p> {{this}}- </p>
         {{/each}}
+        </div>
         <a href="/">Go back</a> 
-    </div>
+    
     </div>
 </div>
