@@ -9,23 +9,23 @@ const { isLoggedOut, isLoggedIn } = require('../middlewares');
 
 //tests
 
-router.get('/', isLoggedIn, (req, res, next) => {
-    Park.find({})
-    .then(parks => {
-      res.render('index', { parks, user: req.user });
-    })
-    .catch(error => next(error))
-  });
+// router.get('/', isLoggedIn, (req, res, next) => {
+//     Park.find({})
+//     .then(parks => {
+//       res.render('index', { parks, user: req.user });
+//     })
+//     .catch(error => next(error))
+//   });
   
   
-  router.get('/:id', (req, res, next) => {
-    const { id } = req.params;
-    Park.findById(id)
-    .then(park => {
-      res.render('details', { park });
-    })
-    .catch(error => next (error))
-  });
+//   router.get('/:id', (req, res, next) => {
+//     const { id } = req.params;
+//     Park.findById(id)
+//     .then(park => {
+//       res.render('details', { park });
+//     })
+//     .catch(error => next (error))
+//   });
   
   
 

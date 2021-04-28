@@ -1,63 +1,65 @@
 {{!-- <h1>{{title}}</h1> --}}
-<p>Welcome to ParkFinder 🌲🌳⛲ </p>
+{{!-- <p>Welcome to ParkFinder 🌲🌳⛲ </p>
 {{#if user}}
   <p>Welcome {{user.username}}</p>
-{{/if}}
+{{/if}} --}}
 
-<h4>Find your park and add it to favorites!</h4>
-<div>
-  <form method="GET" action="/find-parks">
-  <label>
-    <input type="checkbox" id="fountain" name="fountain"> 
-    Fountain
-    </label>    
-    <label>
-    <input type="checkbox" id="playground" name="playground"> 
-    Playground
-    </label>
-    <input type="checkbox" id="toilette" name="toilette"> 
-    Public toilette
-    </label>
-    <input type="checkbox" id="trees" name="trees"> 
-    Trees
-    </label>
-    <input type="checkbox" id="dogs" name="dogs"> 
-    Dogs allowed
-    </label>
-    <input type="checkbox" id="wifi" name="wifi"> 
-    Wifi
-    </label>
-    <input type="checkbox" id="skate" name="skate"> 
-    Skate zone
-    </label>
-    <br>
-    <label for="district"></label>
-<select id="district" name="district">
-  <option name="">Select district</option>
-  <option name="district1">District 1</option>
-  <option name="district2">District 2</option>
-  <option name="district3">District 3</option>  
-</select>
-<input type="submit" value="Submit">
-</form>
-</div>
 
-<div class="list">
-  {{#if parks}}
-    {{#each parks}}
-    <div class="list-item">
-        <h3> {{ parkName }} </h3>
-        <a href="/{{id}}"><img class="images" src="{{ images }}" alt="{{ parkName }}"></a>
+<div class="main">
+    <h4>Find your park and add it to favorites!</h4>
+      <div class="form">
+        <form method="GET" action="/find-parks">
+        <label for="slide">
+          <input type="checkbox" id="slide" name="fountain"> 
+          Fountain
+          
+          <input type="checkbox" id="slide" name="playground"> 
+          Playground
+          
+          <input type="checkbox" id="slide" name="toilette"> 
+          Public toilette
+          
+          <input type="checkbox" id="slide" name="trees"> 
+          Trees
+          
+          <input type="checkbox" id="slide" name="dogs"> 
+          Dogs allowed
+          
+          <input type="checkbox" id="slide" name="wifi"> 
+          Wifi
+          
+          <input type="checkbox" id="slide" name="skate"> 
+          Skate zone
+          </label>
+          <br>
+          <label for="district"></label>
+      <select id="district" name="district">
+        <option name="">Select district</option>
+        <option name="district1">District 1</option>
+        <option name="district2">District 2</option>
+        <option name="district3">District 3</option>  
+      </select>
+      <input type="submit" value="Submit">
+      </form>
+      </div>
 
-        
-        
-        <br>
-        <a href="/{{id}}">Park details</a>
-        
-        
-    </div>
-    {{/each}}
-    {{else}}
-    No resultados
-    {{/if}}
+      <div class="list">
+        {{#if parks}}
+          {{#each parks}}
+          <div class="list-item">
+              <p class="park-name"> {{ parkName }} </p>
+              <a href="/{{id}}"><img class="images" src="{{ images }}" alt="{{ parkName }}"></a>
+
+              
+              
+              <br>
+              <a href="/{{id}}">Park details</a>
+              
+              
+          </div>
+          {{/each}}
+          {{else}}
+          No resultados
+          {{/if}}
+      </div>
 </div>

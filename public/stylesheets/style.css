@@ -1,15 +1,91 @@
 body {
   padding: 0x;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; 
+  /* background-color: darkkhaki; */
+  background-color: #3C9D94;
+  ;
+}
+.main{
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+
+}
 
 a {
-  color: #00B7FF; }
+  color:brown; 
+  text-decoration: none;
+}
 .logo{
   width: 150px;
 }
 /*# sourceMappingURL=style.css.map */
-
+.img-navbar{
+  width: 10%;
+  border-radius: 50%;
+}
 .images{
   width: 80vw;
   height: auto;
+}
+.navbar .navbar-expand-lg .navbar-light .bg-light{
+  background-color: olive;
+}
+/* Checkbox styles*/
+input[type=checkbox] {
+  position: relative;
+  cursor: pointer;
+}
+input[type=checkbox]:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 0;
+  left: 0;
+  border: 2px solid #555555;
+  border-radius: 3px;
+  background-color: white;
+}
+input[type=checkbox]:checked:after {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 10px;
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 2px;
+  left: 6px;
+}
+.container-fluid{
+  background-color: rgba(54, 192, 73, 0.5);
+}
+.profilepic{
+  width:30%;
+}
+.form{
+  background-color: crimson;
+  width: 80vw;
+  display: flex;
+
+}
+.list{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+.park-name{
+  padding-top: 10px;
+  padding-bottom: 0;
+  font-size: 20px;
+}
+.favorite-list{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
 }
