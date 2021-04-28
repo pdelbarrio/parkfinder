@@ -6,7 +6,7 @@ const Park = require('../models/Park.model');
 const { isLoggedOut, isLoggedIn } = require('../middlewares');
 const router = express.Router();
 const saltRounds = 10;
-// Require user model
+const uploader = require('../configs/cloudinary.config');
 
 router.get('/auth/signup', isLoggedOut, (req, res) => {
   res.render('auth/signup');
@@ -96,5 +96,22 @@ router.get('/private/profile', ensureLogin.ensureLoggedIn(), (req, res) => {
     user: req.user
   });
 });
+
+router.get('/profile/edit', isLoggedIn,(req, res, next) => {
+  res.render('auth/edit', { user: req.user });
+})
+
+router.post('/profile/edit', uploader.single('image') ,(req, res, next) => {
+  const { username } = req.body;
+  if(req.file){
+    // User.findOneAndUpdate({ _id: req.user._id }, { username, profile_pic: req.file.path}, )
+    User.findOneAndUpdate({ _id: req.user._id }, { username:username, profile_pic: req.file.path}, { new: true })
+    .then(() => {
+      res.redirect('/private/profile')
+    })
+    .catch(error => next(error))
+  }
+  res.render('edit', { user: req.user });
+})
 
 module.exports = router;
