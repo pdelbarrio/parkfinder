@@ -13,9 +13,9 @@ router.get('/auth/signup', isLoggedOut, (req, res) => {
 })
 
 router.post('/auth/signup', (req, res) => {
-  const { username, password } = req.body;
-  console.log(req.body)
-  if (!username || !password) {
+  const { username, email, password } = req.body;
+  console.log("req.body",req.body)
+  if (!username || !email || !password) {
     res.render('auth/signup', { errorMessage: 'Username and password are required.'})
   }
 
@@ -25,20 +25,20 @@ router.post('/auth/signup', (req, res) => {
   if (password.length < 3) {
     res.render('auth/signup', { errorMessage: 'Password should have at least 3 characters'})
   }
-
-  User.findOne({ username })
-    .then(user => {
-      if (user) {
-        console.log('usuario')
-        return res.render('auth/signup', { errorMessage: 'User already exists.'})
-      }
-
+  // {$or: [{hasFountain: fountain ? true : false },
+  //   {hasPlayGround: playground ? true : false }
+  User.findOne({$or: [{ username } , { email }]})
+  .then((user) => {
+    if (user) {
+      res.render("auth/signup", { errorMessage: "User or email already exists."});
+    } else{
       const salt = bcrypt.genSaltSync(saltRounds);
       const hashPass = bcrypt.hashSync(password, salt);
 
-      User.create({ username, password: hashPass })
-     
+      User.create({ username, email , password: hashPass })      
+      //FIXME:FIXME:TODO:TODO:
         .then((newUser) => {
+          console.log(username)
           console.log(hashPass)
           // return res.redirect('/');
           req.login(newUser, (error) => {
@@ -49,9 +49,12 @@ router.post('/auth/signup', (req, res) => {
         .catch((error) => {console.log(error);
           return res.render('auth/signup', { errorMessage: 'Server error. Try again.'})
         })
-
-    })
+    }
+    //FIXME:FIXME:FIXME:
+  });  
 });
+
+
 router.get('/auth/private', isLoggedIn, (req, res) =>{
   User.findById(req.user.id)
   .populate("favorites")

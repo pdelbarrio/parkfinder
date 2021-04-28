@@ -11,7 +11,13 @@ router.get('/find-parks',(req, res) =>{
   const { fountain, playground, toilette, trees, dogs, wifi, skate } = req.query;
   console.log(req.query)
   
-  Park.find({$or: [{hasFountain: fountain ? true : false }] })
+  Park.find({$or: [{hasFountain: fountain ? true : false },
+    {hasPlayGround: playground ? true : false },
+    {hasPublicToilettes: toilette ? true : false },
+    {hasTrees: trees ? true : false },
+    {allowsDogs: dogs ? true : false },
+    {wifiService: wifi ? true : false },
+    {hasSkateZone: skate ? true : false }] })
   .then((foundParks) =>{
     if(foundParks.length === 0 ){res.render('index', {user: req.user, parks:null})}
     res.render('index', {user: req.user, parks:foundParks})

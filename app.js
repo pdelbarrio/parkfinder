@@ -34,8 +34,8 @@ app.use(
 
 
 
-passport.serializeUser((user, cb) => {
-    cb(null, user._id)
+passport.serializeUser((email, cb) => {
+    cb(null, email._id)
   }),
 
   passport.deserializeUser((id, cb) => {
