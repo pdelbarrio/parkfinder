@@ -80,6 +80,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.locals.title = 'Park Finder | Find your park!';
 
 // Routes middleware goes here
+//añadir ruta /parks TODO:TODO:TODO:
 const parkRouter = require('./routes/parks.routes');
 app.use('/', parkRouter);
 const authRoutes = require('./routes/auth.routes');

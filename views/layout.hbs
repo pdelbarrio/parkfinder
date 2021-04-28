@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+ <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-custom">
     <div class="container-fluid">
       <a href="/"><img class="logo" src="/images/logo1.gif" alt="logo"></a>
       <a class="navbar-brand" href="#"></a>
@@ -26,6 +26,7 @@
           <a class="nav-link" href="/auth/logout">Logout</a>
           <a class="nav-link" href="/auth/private">Private Zone</a>
           <p class="nav-link">Hello <span style="color: green;">{{ user.username}}</span></p>
+          <img class="img-navbar" src="{{user.profile_pic}}" alt=""> 
           {{else}}
           <a class="nav-link" href="/">Home</a>
           <a class="nav-link" href="/auth/signup">Signup</a>

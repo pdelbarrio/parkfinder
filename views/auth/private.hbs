@@ -1,13 +1,13 @@
 <div>Private page</div>
 {{#if user}}
   <div>
-    <h1>Your favorites/reviews</h1>
+    <h1>Your favorite parks</h1>
     <h1>Hello, <span style="color: green;">{{ user.username}}</span>. Here are your favorite parks </h1>
-    {{!-- <img src="https://okdiario.com/img/2019/10/13/parques-mas-bonitos-de-barcelona-655x368.jpg" alt="Your parks."> --}}
+    
     <br>
     <a class="nav-link" href="/profile/edit">Edit profile</a>
     <a href="/">Index</a>
-    <img src="{{user.profile_pic}}" alt=""> 
+    <img class="profilepic" src="{{user.profile_pic}}" alt=""> 
   </div>
 {{/if}}
 
@@ -16,7 +16,8 @@
 {{!-- {{user.favorites}} --}}
 
 {{#each userFavs.favorites}}
-<p>{{parkName}}</p>
+<div class="favorite-list">
+<p class="park-name">{{parkName}}</p>
 <img class="images" src="{{images}}" alt="{{parkName}}">
 <br>
 
@@ -27,6 +28,7 @@
     <button type="submit">Remove <i class="fas fa-heart"></i></button>
   </form>
 <hr>
+</div>
 {{/each}}
 
 
