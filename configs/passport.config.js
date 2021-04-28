@@ -14,8 +14,9 @@ module.exports = (app) => {
   })
 
   // Local Strategy
-  passport.use(new LocalStrategy({ passReqToCallback: true }, (req, username, password, next) => {
-    User.findOne({ username })
+  passport.use(new LocalStrategy({ passReqToCallback: true, usernameField:  'email' }, (req, username, password, next) => {
+    console.log( password)
+    User.findOne({ email: username })    
       .then(user => {
         if (!user) {
           return next(null, false, { message: 'Usuario o contraseña incorrectos' });
