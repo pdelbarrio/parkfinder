@@ -1,68 +1,67 @@
-
 <div class="main-details">
-    
+
     <h2>{{ park.parkName }} </h2>
 
-    
+
 
     <div class="img-like">
-    <img class="images" src="{{ park.images }}" alt="{{ park.parkName }}"> 
-    {{!-- Users only can add favorites when logged --}}
-    {{!-- {{#if user}} --}}
-    <form action="/parks/addfavorites" method="POST">
-        <input type="hidden" name="parkID" value="{{park._id}}">
-        <button type="submit">Add <i class="fas fa-heart"></i></button>
-    </form>
+        <img class="images" src="{{ park.images }}" alt="{{ park.parkName }}">
+        {{!-- Users only can add favorites when logged --}}
+        {{!-- {{#if user}} --}}
+        <form action="/parks/addfavorites" method="POST">
+            <input type="hidden" name="parkID" value="{{park._id}}">
+            <button type="submit">Add <i class="fas fa-heart"></i></button>
+        </form>
     </div>
     {{!-- {{/if}} --}}
     <div>
         <p class="description">{{park.description}}</p>
-            
-         <a class="link-get" href="{{park.getThere}}" target="_blank">Get there!</a>
-         <br>
-         <br>
+
+        <a class="link-get" href="{{park.getThere}}" target="_blank">Get there!</a>
+        <br>
+        <br>
         <p> <span class="key-style"> District: </span> {{park.district}}</p>
-            
+
         <p> <span class="key-style"> Extension: </span> {{park.extension}} ha</p>
-       
+
         <div class="details-list">
-        <p> <span class="key-style">Fountain: </span> {{#if park.hasFountain}}
+            <p> <span class="key-style">Fountain: </span> {{#if park.hasFountain}}
             <div> Yes</div>
             {{else}}
             <div>No</div>
             {{/if}}
-        </p>
+            </p>
         </div>
         <div class="details-list">
-        <p> <span class="key-style"> Playground: </span>{{#if park.hasPlayGround}}
+            <p> <span class="key-style"> Playground: </span>{{#if park.hasPlayGround}}
             <div> Yes</div>
             {{else}}
             <div>No</div>
             {{/if}}</p>
         </div>
         <div class="details-list">
-        <p> <span class="key-style">Public toilettes: </span> {{#if park.hasPublicToilettes}}
+            <p> <span class="key-style">Public toilettes: </span> {{#if park.hasPublicToilettes}}
             <div> Yes</div>
             {{else}}
             <div>No</div>
             {{/if}}</p>
         </div>
         <div class="details-list">
-        <p> <span class="key-style">Trees: </span> {{#if park.hasTrees}}
+            <p> <span class="key-style">Trees: </span> {{#if park.hasTrees}}
             <div> Yes</div>
             {{else}}
             <div>No</div>
             {{/if}}</p>
         </div>
         <div class="details-list">
-        <p> <span class="key-style">Dogs Allowed:</span> {{#if park.allowsDogs}}
+            <p> <span class="key-style">Dogs Allowed:</span> {{#if park.allowsDogs}}
             <div> Yes</div>
             {{else}}
             <div>No</div>
             {{/if}}</p>
         </div>
         <div class="details-list">
-        <p> <span class="key-style"> Wifi: </span> {{#if park.wifiService}}
+            <p> <span class="key-style"> Wifi: </span> {{#if park.wifiService}}
             <div> Yes</div>
             {{else}}
             <div>No</div>
@@ -70,7 +69,7 @@
         </div>
         {{!-- <p> District: {{park.district}}</p> --}}
         <div class="details-list">
-        <p> <span class="key-style"> Skate zone:</span> {{#if park.hasSkateZone}}
+            <p> <span class="key-style"> Skate zone:</span> {{#if park.hasSkateZone}}
             <div> Yes</div>
             {{else}}
             <div>No</div>
@@ -78,11 +77,21 @@
         </div>
         <div class="openrange">
             <p class="key-style"> Open/Close:</p>
-        {{#each park.openRangeHour}}
+            {{#each park.openRangeHour}}
             <p> {{this}}- </p>
-        {{/each}}
+            {{/each}}
         </div>
-        <a href="/">Go back</a> 
-    
+
+        <form action="/parks/{{park.id}}/delete" method="POST">
+            <button type="submit">Eliminar</button>
+        </form>
+        <br>
+        <form action="/parks/{{park.id}}/edit" method="GET">
+            <button type="submit">Editar</button>
+        </form> 
+        <br>
+        <a href="/">Go back</a>
+        
+
     </div>
 </div>

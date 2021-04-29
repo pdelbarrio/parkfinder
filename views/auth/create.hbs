@@ -1,5 +1,6 @@
 <h1>CREATE A PARK</h1>
-<form action="/auth/create" method="POST">
+
+<form class="edit-park" action="/auth/create" method="POST">
     <label for="parkName">Name:</label>
     <input type="text" name="parkName">
     <br>
@@ -22,22 +23,18 @@
     <label for="hasPublicToilettes"> Public toilettes </label><br>
 
     <input type="checkbox" id="hasTrees" name="hasTrees" value="">
-    <label for="trees"> Trees </label><br>
+    <label for="hasTrees"> Trees </label><br>
 
     <input type="checkbox" id="allowsDogs" name="allowsDogs" value="">
-    <label for="vehicle2"> Allow dogs </label><br>
+    <label for="allowDogs"> Allow dogs </label><br>
 
     <input type="checkbox" id="wifiService" name="wifiService" value="">
-    <label for="wifi"> Wifi service </label><br>
+    <label for="hasWifi"> Wifi service </label><br>
 
     <input type="checkbox" id="skateZone" name="skateZone" value="Skate">
-    <label for="skateZone"> Skate zone </label><br>
-
-    <input type="checkbox" name="hasSkateZone">
-    <label for="hasSkateZone">Has skate zone:</label>
+    <label for="hasSkateZone"> Skate zone </label><br>
     
-   <br>
-   <label for="openRangeHour">Open range hour:</label>
+    <label for="openRangeHour">Open range hour:</label>
     <input type="text" name="openRangeHour">
    <br>
     <label for="district"></label>
@@ -59,6 +56,7 @@
     <input type="text" name="getThere">
     <br>
     <button type="submit">Create</button>
+    
 </form>
 {{#if error}}
   <p>Ha ocurrido un error</p>

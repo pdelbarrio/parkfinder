@@ -1,0 +1,97 @@
+<div class="edit-park">
+
+    <h2>Edit form</h2>
+    <h3>{{ park.parkName }}</h3>
+    
+    <div class="img-like">
+        <img class="images" src="{{ park.images }}" alt="{{ park.parkName }}">
+        {{!-- Users only can add favorites when logged --}}
+        {{!-- {{#if user}} --}}
+    </div>
+    {{!-- {{/if}} --}}
+        <div class="edit-item">
+        <label for="parkName">Name:</label>
+        <input type="text" name="parkName" value="{{ park.parkName }}">
+        </div><br>
+        <br>
+
+        <div class="edit-item">
+        <label for="description">Description:</label>
+        <input type="text" name="description" value="{{park.description}}">
+        </div><br>
+        <br>
+
+        <div class="edit-item">
+        <label for="getThere">Get there:</label>
+        <input type="text" name="getThere" value="{{ park.getThere }}">
+        </div><br>
+        <br>
+
+        <p> <span class="key-style"> District: </span> {{park.district}}</p>
+
+        <div class="edit-item">
+        <label for="extension">Extension:</label>
+        <input type="number" name="extension" value="{{park.extension}} ha">
+        </div><br>
+        <br>
+        
+        <div class="edit-item">
+        <input type="checkbox" id="hasFountain" name="hasFountain" value="{{ park.hasFountain }}">
+        <label for="hasFountain"> Fountain </label>
+        </div><br>
+        <br>
+
+        <div class="edit-item">
+        <input type="checkbox" id="hasPlayGround" name="hasPlayGround" value="{{ park.hasPlayGground }}">
+        <label for="hasPlayGround"> Children playground </label>
+        </div><br>
+        <br>
+
+        <div class="edit-item">
+        <input type="checkbox" id="hasPublicToilettes" name="hasPublicToilettes" value="{{ park.hasPublicToilettes }}">
+        <label for="hasPublicToilettes"> Public toilettes </label>
+        </div><br>
+        <br>
+
+        <div class="edit-item">
+        <input type="checkbox" id="hasTrees" name="hasTrees" value="{{ park.hasTrees }}">
+        <label for="trees"> Trees </label><br>
+        </div><br>
+        <br>
+
+        <div class="edit-item">
+        <input type="checkbox" id="allowsDogs" name="allowsDogs" value="{{ park.allowsDogs }}">
+        <label for="vehicle2"> Allow dogs </label><br>
+        </div>
+        <br>
+        <br>
+
+        <div class="edit-item">
+        <input type="checkbox" id="wifiService" name="wifiService" value="{{ park.wifiService }}">
+        <label for="wifi"> Wifi service </label><br>
+        </div>
+        {{!-- <p> District: {{park.district}}</p> --}}
+        <br>
+
+        <div class="edit-item">
+        <input type="checkbox" id="skateZone" name="skateZone" value="{{ park.hasSkateZone }}">
+        <label for="hasSkateZone"> Skate zone </label><br>
+        </div><br>
+        <br>
+
+        <div class="edit-item">
+        <label for="openRangeHour">Open range hour:</label>
+        <input type="text" name="openRangeHour" value="{{ park.openRangeHour }}">
+        </div><br>
+        <br>
+
+        <form action="/parks/{{park.id}}/edit" method="GET">
+        <button id="edit-btn" type="submit">Submit</button>
+        <br>
+        <br>
+        </form> 
+            
+            <a href="/">Go back</a>
+
+    </div>
+</div>

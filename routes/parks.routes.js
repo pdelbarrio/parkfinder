@@ -95,7 +95,24 @@ router.post('/quitfavorites', (req, res, next) => {
     .catch((error) => next(error));
 });
 
-//Find parks
+router.get('/:id/edit', (req, res, next) => {
+  const { id } = req.params;
+  Park.findById(id)
+  .then(park => {
+    res.render('edit-park', {  user: req.user, park });
+  })
+  .catch(error => next (error))
+});
+
+router.post('/:id/delete', (req, res) => {
+  const { id } = req.params;
+  Park.findOneAndDelete({ _id: id })
+  .then(() => {
+    res.redirect(`/parks`);
+  })
+  .catch(error => console.error(error))
+})
+
 
 
 module.exports = router;

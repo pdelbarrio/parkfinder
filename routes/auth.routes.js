@@ -74,7 +74,6 @@ router.get('/auth/private', isLoggedIn, (req, res) =>{
   });
 
   router.post('/auth/create', (req, res) => {
-    console.log(req.body.name)
     const { parkName, description, images, extension, 
       hasFountain, hasPlayground, hasPublicToilettes, 
       hasTrees, allowDogs, wifiService, openRangeHour, 
@@ -92,8 +91,9 @@ router.get('/auth/private', isLoggedIn, (req, res) =>{
   })
   
   console.log(req.user.id)
-  // Park.findById
+// Park.findById
 })
+
 
 router.get('/auth/login', isLoggedOut, (req, res) => {
   res.render('auth/login');
