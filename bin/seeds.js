@@ -1,10 +1,12 @@
+require('dotenv').config();
 const parks = require("../data");
 const Park = require("../models/Park.model");
 const mongoose = require("mongoose");
 const DB_NAME = "parkfinder";
 
+
 mongoose
-  .connect(`mongodb://localhost/${DB_NAME}`)
+  .connect(process.env.MONGODB_URL)
   .then(() => {
     console.log("Connected to database only to create parks information");
 
