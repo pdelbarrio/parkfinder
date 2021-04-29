@@ -1,0 +1,65 @@
+<h1>CREATE A PARK</h1>
+<form action="/auth/create" method="POST">
+    <label for="parkName">Name:</label>
+    <input type="text" name="parkName">
+    <br>
+    <label for="description">Description:</label>
+    <input type="text" name="description">
+<br>
+    <label for="images">Images</label>
+    <input type="text" name="images">    
+<br>
+    <label for="extension">Extension:</label>
+    <input type="number" name="extension">
+<br>
+    <input type="checkbox" id="hasFountain" name="hasFountain" value="">
+    <label for="hasFountain"> Fountain </label><br>
+
+    <input type="checkbox" id="hasPlayGround" name="hasPlayGround" value="">
+    <label for="hasPlayGround"> Children playground </label><br>
+
+    <input type="checkbox" id="hasPublicToilettes" name="hasPublicToilettes" value="">
+    <label for="hasPublicToilettes"> Public toilettes </label><br>
+
+    <input type="checkbox" id="hasTrees" name="hasTrees" value="">
+    <label for="trees"> Trees </label><br>
+
+    <input type="checkbox" id="allowsDogs" name="allowsDogs" value="">
+    <label for="vehicle2"> Allow dogs </label><br>
+
+    <input type="checkbox" id="wifiService" name="wifiService" value="">
+    <label for="wifi"> Wifi service </label><br>
+
+    <input type="checkbox" id="skateZone" name="skateZone" value="Skate">
+    <label for="skateZone"> Skate zone </label><br>
+
+    <input type="checkbox" name="hasSkateZone">
+    <label for="hasSkateZone">Has skate zone:</label>
+    
+<br>
+<label for="openRangeHour">Open range hour:</label>
+    <input type="text" name="openRangeHour">
+<br>
+    <label for="district"></label>
+      <select id="district" name="district">
+        <option value="" name="">Select district</option>
+        <option value="Sants-Montjuïc" name="Sants-Montjuïc">Sants-Montjuïc</option>
+        <option value="Ciutat Vella" name="Ciutat Vella">Ciutat Vella</option>
+        <option value="Sant Martí" name="Sant Martí">Sant Martí</option> 
+        <option value="Eixample" name="Eixample">Eixample</option>
+        <option value="Sarrià-Sant Gervasi" name="Sarrià-Sant Gervasi">Sarrià-Sant Gervasi</option>
+        <option value="Nou Barris" name="Nou Barris">Nou Barris</option>
+        <option value="Les Corts" name="Les Corts">Les Corts</option>
+        <option value="Horta-Guinardó" name="Horta-Guinardó">Horta-Guinardó</option>
+        <option value="Gràcia" name="Gràcia">Gràcia</option> 
+      </select>
+<br>
+
+    <label for="getThere">Get there:</label>    
+    <input type="text" name="getThere">
+    <br>
+    <button type="submit">Create</button>
+</form>
+{{#if error}}
+  <p>Ha ocurrido un error</p>
+{{/if}}

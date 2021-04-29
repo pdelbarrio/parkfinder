@@ -65,6 +65,31 @@ router.get('/auth/private', isLoggedIn, (req, res) =>{
     }) 
 
   })
+
+  //Ruta create
+  router.get('/auth/create', ensureLogin.ensureLoggedIn(), (req, res) => {
+    res.render('auth/create', {
+      user: req.user
+    });
+  });
+
+  router.post('/auth/create', (req, res) => {
+    console.log(req.body.name)
+    const { parkName, description, images, extension, 
+      hasFountain, hasPlayground, hasPublicToilettes, 
+      hasTrees, allowDogs, wifiService, openRangeHour, 
+      district, hasSkateZone, getThere } = req.body;
+    Park.create({ parkName, description, images, extension, 
+      hasFountain, hasPlayground, hasPublicToilettes, 
+      hasTrees, allowDogs, wifiService, openRangeHour, 
+      district, hasSkateZone, getThere }) 
+    .then(() => {
+      res.redirect("/parks")
+    })
+    .catch(error => {
+      res.render('auth/create', { error })
+    })
+  })
   
   console.log(req.user.id)
   // Park.findById
