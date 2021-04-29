@@ -8,16 +8,17 @@ const router = express.Router();
 
 router.get('/find-parks',(req, res) =>{
   console.log("test")
-  const { fountain, playground, toilette, trees, dogs, wifi, skate } = req.query;
+  const { fountain, playground, toilette, trees, dogs, wifi, skate, district } = req.query;
   console.log(req.query)
   
-  Park.find({$or: [{hasFountain: fountain ? true : false },
+  Park.find({$and: [{$or: [{hasFountain: fountain ? true : false },
     {hasPlayGround: playground ? true : false },
     {hasPublicToilettes: toilette ? true : false },
     {hasTrees: trees ? true : false },
     {allowsDogs: dogs ? true : false },
     {wifiService: wifi ? true : false },
-    {hasSkateZone: skate ? true : false }] })
+    {hasSkateZone: skate ? true : false }]},
+    {district: district}] })
   .then((foundParks) =>{
     if(foundParks.length === 0 ){res.render('index', {user: req.user, parks:null})}
     res.render('index', {user: req.user, parks:foundParks})
@@ -58,13 +59,13 @@ router.post('/addfavorites', (req, res, next) => {
             userID,
               { $push: { favorites : parkID }}, { new: true}
           )
-            .then((user) => res.redirect(`/${parkID}`))
+            .then((user) => res.redirect(`/parks/${parkID}`))
             .catch((error) => next(error));
         } else {
-          res.redirect(`/${parkID}`);
+          res.redirect(`/parks/${parkID}`);
         }
       } else {
-        res.redirect(`/${parkID}`); 
+        res.redirect(`/parks/${parkID}`); 
       }
     })
     .catch((error) => next(error));

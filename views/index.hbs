@@ -8,7 +8,7 @@
 <div class="main">
     <h4>Find your park and add it to favorites!</h4>
       <div class="form">
-        <form method="GET" action="/find-parks">
+        <form method="GET" action="/parks/find-parks">
         <label for="slide">
           <div class="main-checkbox">
           <div class="checkboxes">
@@ -43,16 +43,16 @@
           <br>
           <label for="district"></label>
       <select id="district" name="district">
-        <option name="">Select district</option>
-        <option name="Sants-Montjuïc">Sants-Montjuïc</option>
-        <option name="Ciutat Vella">Ciutat Vella</option>
-        <option name="Sant Martí">Sant Martí</option> 
-        <option name="Eixample">Eixample</option>
-        <option name="Sarrià-Sant Gervasi">Sarrià-Sant Gervasi</option>
-        <option name="Nou Barris">Nou Barris</option>
-        <option name="Les Corts">Les Corts</option>
-        <option name="Horta-Guinardó">Horta-Guinardó</option>
-        <option name="Gràcia">Gràcia</option> 
+        <option value="" name="">Select district</option>
+        <option value="Sants-Montjuïc" name="Sants-Montjuïc">Sants-Montjuïc</option>
+        <option value="Ciutat Vella" name="Ciutat Vella">Ciutat Vella</option>
+        <option value="Sant Martí" name="Sant Martí">Sant Martí</option> 
+        <option value="Eixample" name="Eixample">Eixample</option>
+        <option value="Sarrià-Sant Gervasi" name="Sarrià-Sant Gervasi">Sarrià-Sant Gervasi</option>
+        <option value="Nou Barris" name="Nou Barris">Nou Barris</option>
+        <option value="Les Corts" name="Les Corts">Les Corts</option>
+        <option value="Horta-Guinardó" name="Horta-Guinardó">Horta-Guinardó</option>
+        <option value="Gràcia" name="Gràcia">Gràcia</option> 
       </select>
       <input type="submit" value="Submit">
       </form>
@@ -63,18 +63,18 @@
           {{#each parks}}
           <div class="list-item">
               <p class="park-name"> {{ parkName }} </p>
-              <a href="/{{id}}"><img class="images" src="{{ images }}" alt="{{ parkName }}"></a>
+              <a href="/parks/{{id}}"><img class="images" src="{{ images }}" alt="{{ parkName }}"></a>
 
               
               
               <br>
-              <a href="/{{id}}">Park details</a>
+              <a href="/parks/{{id}}">Park details</a>
               
               
           </div>
           {{/each}}
           {{else}}
-          No resultados
+          No matches found, please try again
           {{/if}}
       </div>
 </div>

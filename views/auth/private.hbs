@@ -21,9 +21,9 @@
 <img class="images" src="{{images}}" alt="{{parkName}}">
 <br>
 
-<a class="" href="/{{id}}">Park details</a>
+<a class="" href="/parks/{{id}}">Park details</a>
 
-<form action="/quitfavorites" method="POST">
+<form action="/parks/quitfavorites" method="POST">
     <input type="hidden" name="parkID" value="{{this._id}}">
     <button type="submit">Remove <i class="fas fa-heart"></i></button>
   </form>

@@ -47,7 +47,7 @@ passport.serializeUser((email, cb) => {
 require('./configs/passport.config')(app);
 
 mongoose
-  .connect('mongodb://localhost/parkfinder', {
+  .connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true
@@ -81,8 +81,10 @@ app.locals.title = 'Park Finder | Find your park!';
 
 // Routes middleware goes here7
 //añadir ruta /parks TODO:TODO:TODO:
+const indexRouter = require('./routes/index.routes');
+app.use('/', indexRouter);
 const parkRouter = require('./routes/parks.routes');
-app.use('/', parkRouter);
+app.use('/parks', parkRouter);
 const authRoutes = require('./routes/auth.routes');
 app.use('/', authRoutes);
 

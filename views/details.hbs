@@ -9,7 +9,7 @@
     <img class="images" src="{{ park.images }}" alt="{{ park.parkName }}"> 
     {{!-- Users only can add favorites when logged --}}
     {{!-- {{#if user}} --}}
-    <form action="/addfavorites" method="POST">
+    <form action="/parks/addfavorites" method="POST">
         <input type="hidden" name="parkID" value="{{park._id}}">
         <button type="submit">Add <i class="fas fa-heart"></i></button>
     </form>
