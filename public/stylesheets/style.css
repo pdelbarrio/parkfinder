@@ -60,7 +60,10 @@ a {
   margin: 0;
   background-color: olive;
 }
-
+.navbar-user{
+  display: flex;
+  justify-content:last baseline;
+}
 .container-fluid{
   padding: 0 !important;
   margin-left: auto !important;
@@ -73,6 +76,8 @@ a {
 }
 .profilepic{
   width:30%;
+  height: auto;
+  border-radius: 50%;
 }
 .form{
   padding: 10px;
