@@ -26,7 +26,7 @@ const parkSchema = new Schema({
     wifiService: { type: Boolean },    
     openRangeHour: { "type": "array",
                     "maxItems": 2,
-                    "items":{
+                    "items": {
                     "type": "string"
     }},
     district: { type: String, enum: [ "Sants-Montjuïc", "Ciutat Vella", "Sant Martí", "Eixample", "Sarrià-Sant Gervasi", "Nou Barris", "Les Corts", "Horta-Guinardó", "Gràcia" ] },

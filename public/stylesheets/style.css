@@ -16,6 +16,7 @@ h2,
 h3 {
   padding: 20px;
   font-size: 30px;
+  text-align: center;
 }
 
 .main-details{
@@ -38,17 +39,17 @@ h3 {
   font-weight: 900;
 }
 a {
-  color:rgb(251, 255, 0); 
-  text-decoration: underline;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  font-weight: 900;
+  color:rgb(15, 82, 6); 
+  text-decoration: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20x;
+  font-size: 18px;;
 }
 
 #create{
   display: inline;
-  border: 1px solid yellow;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 .logo{
   width: 180px;
@@ -101,7 +102,6 @@ a {
   margin-left: auto !important;
   margin-right: auto !important;
   background-color: #f1efe9;
-  border-bottom: 5px solid #0dcaf0;
 }
 
 .navbar > .container-fluid{
@@ -123,11 +123,12 @@ justify-content: space-evenly;
 }
 
 .form{
-  padding: 10px;
+  padding: 20px;
   background-color: rgba(31, 116, 19, 0.322);
   width: 85vw;
   display: flex;
-  border-radius: 10%;
+  justify-content: space-evenly;
+  border-radius: 20%;
 }
 
 .main-checkbox{
@@ -135,10 +136,18 @@ justify-content: space-evenly;
   justify-content: space-around;
 }
 
+#slide{
+  padding 10px;
+}
+
 .list{
   display:flex;
   flex-direction: column;
   align-items: center;
+}
+
+.list-item{
+  margin-top: 20px;
 }
 
 .park-name{
@@ -160,12 +169,13 @@ justify-content: space-evenly;
 
 .edit-park{
   display: flex;
-  flex-flow: row wrap;
-  align-items: baseline;
+  flex-flow: column wrap;
+  align-items: center;
   justify-content: space-around;
 }
 
 .edit-item{
+  display: flex;
   margin: 10px;
 }
 

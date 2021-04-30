@@ -65,9 +65,9 @@ router.get('/auth/private', isLoggedIn, (req, res) =>{
     }) 
 
   })
-
+})
   //Ruta create
-  router.get('/auth/create', ensureLogin.ensureLoggedIn(), (req, res) => {
+  router.get('/auth/create', isLoggedIn, (req, res) => {
     res.render('auth/create', {
       user: req.user
     });
@@ -76,23 +76,33 @@ router.get('/auth/private', isLoggedIn, (req, res) =>{
   router.post('/auth/create', (req, res) => {
     const { parkName, description, images, extension, 
       hasFountain, hasPlayground, hasPublicToilettes, 
-      hasTrees, allowDogs, wifiService, openRangeHour, 
+      hasTrees, allowDogs, wifiService, open, close, 
       district, hasSkateZone, getThere } = req.body;
-    Park.create({ parkName, description, images, extension, 
-      hasFountain, hasPlayground, hasPublicToilettes, 
-      hasTrees, allowDogs, wifiService, openRangeHour, 
-      district, hasSkateZone, getThere }) 
+    Park.create({ parkName, 
+      description, 
+      images, 
+      extension, 
+      hasFountain : hasFountain ? true : false, 
+      hasPlayground : hasPlayground ? true : false,
+      hasPublicToilettes : hasPublicToilettes ? true : false, 
+      hasTrees: hasTrees ? true : false, 
+      allowDogs : allowDogs ? true : false, 
+      wifiService : wifiService ? true : false,
+      hasSkateZone : hasSkateZone ? true : false,  
+      openRangeHour: [ open, close ],
+      district,
+      getThere }) 
     .then(() => {
       res.redirect("/parks")
     })
     .catch(error => {
+      console.log(error)
       res.render('auth/create', { error })
     })
   })
   
-  console.log(req.user.id)
 // Park.findById
-})
+
 
 
 router.get('/auth/login', isLoggedOut, (req, res) => {

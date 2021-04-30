@@ -32,8 +32,6 @@ app.use(
   })
 )
 
-
-
 passport.serializeUser((email, cb) => {
     cb(null, email._id)
   }),

@@ -1,42 +1,58 @@
-<h1>CREATE A PARK</h1>
+<h1>Create a park</h1>
 
 <form class="edit-park" action="/auth/create" method="POST">
     <label for="parkName">Name:</label>
     <input type="text" name="parkName">
     <br>
+    <br>
     <label for="description">Description:</label>
     <input type="text" name="description">
+    <br>
     <br>
     <label for="images">Images</label>
     <input type="text" name="images">    
     <br>
+    <br>
     <label for="extension">Extension:</label>
     <input type="number" name="extension">
     <br>
+    <br>
+    <div class="checkboxes">
     <input type="checkbox" id="hasFountain" name="hasFountain" value="">
     <label for="hasFountain"> Fountain </label><br>
-
+    <br>
+    <br>
     <input type="checkbox" id="hasPlayGround" name="hasPlayGround" value="">
     <label for="hasPlayGround"> Children playground </label><br>
-
+    <br>
+    <br>
     <input type="checkbox" id="hasPublicToilettes" name="hasPublicToilettes" value="">
     <label for="hasPublicToilettes"> Public toilettes </label><br>
-
+    <br>
+    <br>
     <input type="checkbox" id="hasTrees" name="hasTrees" value="">
     <label for="hasTrees"> Trees </label><br>
-
+    <br>
+    <br>
     <input type="checkbox" id="allowsDogs" name="allowsDogs" value="">
     <label for="allowDogs"> Allow dogs </label><br>
-
+    <br>
+    <br>
     <input type="checkbox" id="wifiService" name="wifiService" value="">
     <label for="hasWifi"> Wifi service </label><br>
-
+    <br>
+    <br>
     <input type="checkbox" id="skateZone" name="skateZone" value="Skate">
     <label for="hasSkateZone"> Skate zone </label><br>
-    
-    <label for="openRangeHour">Open range hour:</label>
-    <input type="text" name="openRangeHour">
-   <br>
+    <br>
+    <br>
+    <label for="openRangeHour">Open hour:</label>
+    <input type="time" name="open">
+    <br>
+    <label for="openRangeHour">Close hour:</label>
+    <input type="time" name="close">
+    <br>
+    <br>
     <label for="district"></label>
       <select id="district" name="district">
         <option value="" name="">Select district</option>
@@ -51,13 +67,17 @@
         <option value="Gràcia" name="Gràcia">Gràcia</option> 
       </select>
     <br>
+    <br>
 
     <label for="getThere">Get there:</label>    
     <input type="text" name="getThere">
     <br>
+    <br>
+    </div>
     <button type="submit">Create</button>
+    <a href="/">Go back</a>
     
 </form>
 {{#if error}}
-  <p>Ha ocurrido un error</p>
+  <p>Ha ocurrido un error con el envío del formulario</p>
 {{/if}}
